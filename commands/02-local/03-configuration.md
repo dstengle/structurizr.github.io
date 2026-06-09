@@ -15,7 +15,7 @@ has_toc: false
 The prebuilt Docker image uses a data directory of `/usr/local/structurizr`, so requires a Docker volume mount to map this to a directory on your computer. For example (replace `PATH` with the path to your Structurizr data directory):
 
 ```
-docker run -it --rm -p 8080:8080 -v PATH:/usr/local/structurizr structurizr/structurizr local
+docker run -it --rm -p 8080:8080 --user $(id -u):$(id -g) -v PATH:/usr/local/structurizr structurizr/structurizr local
 ```
 
 The data directory can be specified as an argument when using the Java .war file:
@@ -29,7 +29,7 @@ java -jar structurizr.war local PATH
 Port 8080 is used by default, but can be changed as follows if you are using the Docker image:
 
 ```
-docker run -it --rm -p 9090:9090 -e PORT=9090 -v PATH:/usr/local/structurizr structurizr/structurizr local
+docker run -it --rm -p 9090:9090 -e PORT=9090 --user $(id -u):$(id -g) -v PATH:/usr/local/structurizr structurizr/structurizr local
 ```
 
 And with the Java .war file:

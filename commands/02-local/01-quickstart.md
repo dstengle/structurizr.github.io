@@ -24,14 +24,14 @@ You can now start Structurizr with the following commands, replacing `PATH` with
 
 ```
 docker pull structurizr/structurizr
-docker run -it --rm -p 8080:8080 -v PATH:/usr/local/structurizr structurizr/structurizr local
+docker run -it --rm -p 8080:8080 --user $(id -u):$(id -g) -v PATH:/usr/local/structurizr structurizr/structurizr local
 ```
 
 For example, if your Structurizr data directory is located at `/Users/simon/structurizr`, the command would be:
 
 ```
 docker pull structurizr/structurizr
-docker run -it --rm -p 8080:8080 -v /Users/simon/structurizr:/usr/local/structurizr structurizr/structurizr local
+docker run -it --rm -p 8080:8080 --user $(id -u):$(id -g) -v /Users/simon/structurizr:/usr/local/structurizr structurizr/structurizr local
 ```
 
 ## 3. Open your web browser
